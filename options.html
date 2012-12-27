@@ -2,17 +2,25 @@
 <head><title>My Extension Options</title></head>
 <script src="jquery.js"></script>
 <script src="options.js"></script>
+<style>
+    input.new_link
+    {
+        width: 300px;
+    }
+</style>
 <body>
 
 <div>Links to main menu:</div>
 <div style="border: 1px #cccccc solid; padding: 10px; float: left">
     <div><span style="margin-right: 90px">Label:</span><span>Url:</span></div>
-    <div id="data_container" style="float: left"></div>
-    <div id="add_link" style="cursor: pointer; float: left">[+]</div>
-    <div>
-        <button id="save">Save</button>
-        <span id="status" style="color: #20b2aa"></span>
-    </div>
+    <form id="save">
+        <div id="data_container" style="float: left"></div>
+        <div id="add_link" style="cursor: pointer; float: left">[+]</div>
+        <div>
+            <input type="submit" value="Save">
+            <span id="status" style="color: #20b2aa"></span>
+        </div>
+    </form>
 </div>
 </body>
 </html>

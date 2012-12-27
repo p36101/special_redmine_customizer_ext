@@ -52,8 +52,9 @@ jQuery(document).ready(function(){
         jQuery('.pair:last .new_name').focus();
     });
 
-    jQuery('#save').click(function(){
+    jQuery('#save').submit(function(){
         save_options();
+        return false;
     });
 })
 
