@@ -1,16 +1,31 @@
 <html>
-<head><title>My Extension Options</title></head>
-<script src="jquery.js"></script>
-<script src="options.js"></script>
-<style>
-    input.new_link
-    {
-        width: 300px;
-    }
-</style>
+<head>
+    <title>My Extension Options</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script src="jquery.js"></script>
+    <script src="options.js"></script>
+    <style>
+        .new_link, .new_kw
+        {
+            width: 300px;
+        }
+    </style>
+</head>
 <body>
 
-<div>Links to main menu:</div>
+<div>Options:</div>
+<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 295px">
+    <div>
+        <span style="margin-right: 90px">Special issue names:</span>
+        <span><input type="checkbox" id="spec_ops"></span>
+        <div style="width: 50px; float: right; padding-top: 4px">
+            <span id="status_0" style="color: #20b2aa; font-size: 11px"></span>
+        </div>
+    </div>
+</div>
+<div style="clear: both"></div>
+
+<div style="clear: left; margin-top: 20px">Links to main menu:</div>
 <div style="border: 1px #cccccc solid; padding: 10px; float: left">
     <div><span style="margin-right: 90px">Label:</span><span>Url:</span></div>
     <form id="save">
@@ -19,6 +34,20 @@
         <div>
             <input type="submit" value="Save">
             <span id="status" style="color: #20b2aa"></span>
+        </div>
+    </form>
+</div>
+<div style="clear: both"></div>
+
+<div style="clear: left; margin-top: 20px">Key words for highlight in Gantt tree:</div>
+<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
+    <form id="keywords">
+        <div id="kw_data_container" style="float: left"></div>
+        <div id="add_kw" style="cursor: pointer; float: left">[+]</div>
+        <div>
+            <input type="submit" value="Save">
+            <input type="button" value="Reset" id="reset_kw">
+            <span id="kw_status" style="color: #20b2aa"></span>
         </div>
     </form>
 </div>

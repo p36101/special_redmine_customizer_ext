@@ -1,10 +1,10 @@
 {
 	"name": "Special Redmine customizer",
-	"version": "1.5.1",
+	"version": "1.8.5",
 	"icons": {
 		"16": "raccoon_comp16.png",
-		"48": "raccoon_comp48.png",
-		"128": "raccoon_comp.png" },
+		"48": "raccoon_comp48.png"
+    },
 	"permissions": [
 		"tabs",
 		"storage",
@@ -12,7 +12,7 @@
 	],
 	"browser_action": {
 		"default_title": "Special Redmine customizer",
-		"default_icon": "raccoon_comp.png",
+		"default_icon": "raccoon_comp48.png",
 		"default_popup": "popup.html"
 	},
 	"manifest_version": 2,

@@ -1,9 +1,25 @@
+// вывод ссылок
 for (var i = 0; i < special_links.length; i++)
 {
     jQuery('#top-menu ul:last').append('<li><a href="' + special_links[i][1] + '">' + special_links[i][0] + '</a></li>');
 }
-//    console.log(jQuery('#loggedas a').text());
-if (jQuery('#loggedas a:first').attr('href') == '/users/15')
+
+if (jQuery('#main-menu').find('li a.gantt').hasClass('selected'))
+{
+    // expand tree controls
+    jQuery('#content h2:first').after('<fieldset class="collapsible" id="tree"><legend onclick="toggleFieldset(this);">Tree manipulation</legend><div><a id="tree_expand" href="#" class="icon icon-checked">expand</a><a style="margin-left: 20px" href="javascript:location.href=location.href;" class="icon icon-reload">reload</a></div></fieldset>');
+
+    // meta issues highlight
+    jQuery('.icon-issue').each(function(){
+        for (var i = 0; i < gantt_keywords.length; i++)
+        {
+            if (jQuery(this).text().search(gantt_keywords[i]) != -1)
+                jQuery(this).css('background-color' ,'rgb(208, 243, 236)');
+        }
+    });
+}
+
+if (special_options_issue_name)
 {
     // create/update
     jQuery('#issue_tracker_id option').each(function(){
@@ -32,7 +48,6 @@ function replace_word(str)
         rtn += h2_issue[i] + ' ';
     }
 
-console.log(h2_issue);
     return  rtn.trim();
 }
 
@@ -51,3 +66,17 @@ function replace_str(str)
     else
         return str;
 }
+
+function expand_tree()
+{
+    jQuery('.issue-subject').css({'background-color': '#F7F7F7', 'width': ''});
+    jQuery('.gantt_hdr').css({'border': '0px'});
+    jQuery('.project-name:first').parents('td').css('width', '100%').children('div:first').css('width', '100%').children('div:first').css('width', '100%');
+}
+
+jQuery(document).ready(function(){
+    jQuery('#tree_expand').live('click', function(){
+        expand_tree();
+        return false;
+    });
+});
