@@ -12,7 +12,7 @@ chrome.storage.sync.get(
         else
             special_links = 'var special_links = [];';
 
-        if (data.special_options && data.special_options.length)
+        if (data.special_options && data.special_options.length && data.special_options[0])
             special_options_issue_name += 'var special_options_issue_name = 1;';
         else
             special_options_issue_name += 'var special_options_issue_name = 0;';

@@ -5,64 +5,69 @@
     <script src="jquery.js"></script>
     <script src="options.js"></script>
     <style>
-        .new_link, .new_kw
-        {
-            width: 300px;
-        }
+        #page_container {width: 500px}
+        .new_link, .new_kw { width: 300px; }
+        fieldset.collapsible { border: 1px silver solid; font-size: 0.9em; margin-bottom: 10px }
+        fieldset.collapsible legend { padding-left: 16px; background: url(arrow_expanded.png) no-repeat 0% 40%; cursor:pointer; }
+        fieldset.collapsible.collapsed legend { background-image: url(arrow_collapsed.png); }
+
     </style>
 </head>
 <body>
-
-<div>Options:</div>
-<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
-    <div style="color: #cccccc;font-family: monospace;font-size: 10px;margin: -5px 0 10px 0;">Press Enter to save text fields</div>
-    <div>
-        <label for="scope_value" style="margin-right: 90px">Scope:</label>
-        <span><input type="text" id="scope_value"></span>
-        <div style="width: 50px; float: right; padding-top: 4px">
-            <span id="status_scope" style="color: #20b2aa; font-size: 11px"></span>
+<div id="page_container">
+    <fieldset class="collapsible">
+        <legend class="field_legend">Options</legend>
+        <div>
+            <div style="color: #cccccc;font-family: monospace;font-size: 10px;margin: 0 0 10px 0;">Press Enter to save text fields</div>
+            <div>
+                <label for="scope_value" style="margin-right: 90px">Scope:</label>
+                <span><input type="text" id="scope_value"></span>
+                <span id="status_scope" style="color: #20b2aa; font-size: 11px"></span>
+            </div>
         </div>
-    </div>
-</div>
-<div style="clear: both"></div>
+    </fieldset>
 
-<div>Fun options:</div>
-<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
-    <div>
-        <label for="spec_ops" style="margin-right: 85px">Special issue names (ru):</label>
-        <span><input type="checkbox" id="spec_ops"></span>
-        <div style="width: 50px; float: right; padding-top: 4px">
+
+    <fieldset class="collapsible collapsed">
+        <legend class="field_legend">Fun options</legend>
+        <div style="display: none">
+            <label for="spec_ops" style="margin-right: 85px">Special issue names (ru):</label>
+            <span><input type="checkbox" id="spec_ops"></span>
             <span id="status_0" style="color: #20b2aa; font-size: 11px"></span>
         </div>
-    </div>
-</div>
-<div style="clear: both"></div>
+    </fieldset>
 
-<div style="clear: left; margin-top: 20px">Links to top menu:</div>
-<div style="border: 1px #cccccc solid; padding: 10px; float: left">
-    <div><span style="margin-right: 90px">Label:</span><span>Url:</span></div>
-    <form id="save">
-        <div id="data_container" style="float: left"></div>
-        <div id="add_link" style="cursor: pointer; float: left">[+]</div>
+    <fieldset class="collapsible collapsed">
+        <legend class="field_legend">Links to top menu</legend>
         <div>
-            <input type="submit" value="Save">
-            <span id="status" style="color: #20b2aa"></span>
+            <div><span style="margin-right: 90px">Label:</span><span>Url:</span></div>
+            <form id="save">
+                <div id="data_container" style="float: left"></div>
+                <div id="add_link" style="cursor: pointer; float: left">[+]</div>
+                <div style="clear: both"></div>
+                <div>
+                    <input type="submit" value="Save">
+                    <span id="status" style="color: #20b2aa"></span>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
-<div style="clear: both"></div>
+    </fieldset>
 
-<div style="clear: left; margin-top: 20px">Key words for highlight in Gantt tree:</div>
-<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
-    <form id="keywords">
-        <div id="kw_data_container" style="float: left"></div>
-        <div id="add_kw" style="cursor: pointer; float: left">[+]</div>
+    <fieldset class="collapsible collapsed">
+        <legend class="field_legend">Key words for highlight in Gantt tree</legend>
         <div>
-            <input type="submit" value="Save">
-            <input type="button" value="Reset" id="reset_kw">
-            <span id="kw_status" style="color: #20b2aa"></span>
+            <form id="keywords">
+                <div id="kw_data_container" style="float: left"></div>
+                <div id="add_kw" style="cursor: pointer; float: left">[+]</div>
+                <div style="clear: both"></div>
+                <div>
+                    <input type="submit" value="Save">
+                    <input type="button" value="Reset" id="reset_kw">
+                    <span id="kw_status" style="color: #20b2aa"></span>
+                </div>
+            </form>
         </div>
-    </form>
+    </fieldset>
 </div>
 </body>
 </html>

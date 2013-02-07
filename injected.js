@@ -13,7 +13,7 @@ if (jQuery('#main-menu').find('li a.gantt').hasClass('selected'))
     jQuery('.icon-issue').each(function(){
         for (var i = 0; i < gantt_keywords.length; i++)
         {
-            if (jQuery(this).text().search(gantt_keywords[i]) != -1)
+            if (jQuery(this).text().search(new RegExp(gantt_keywords[i], 'i')) != -1)
                 jQuery(this).css('background-color' ,'rgb(208, 243, 236)');
         }
     });
@@ -158,7 +158,7 @@ jQuery(document).ready(function(){
                     jQuery('#time-report .period').each(function(i,el){dates_head[i] = jQuery(this).text()});
                     jQuery('.last-level:visible td.hours').each(function(i,el){dates_value[i] = jQuery(this).text()});
                     dates_value.pop();
-                    console.log(dates_value);
+//                    console.log(dates_value);
                     var first_day_of_week = new Date(dates_head[0]).getDay();
                     // monday first
                     first_day_of_week = (first_day_of_week == 0) ? 6 : first_day_of_week - 1;

@@ -64,7 +64,7 @@ jQuery(document).ready(function(){
                 if (data.special_options[0])
                     jQuery('#spec_ops').attr('checked', 'checked');
             }
-            console.log(data);
+
             if (data.gantt_keywords && data.gantt_keywords.length)
             {
                 for (var i = 0; i < data.gantt_keywords.length; i++)
@@ -156,4 +156,16 @@ jQuery(document).ready(function(){
                 '<div><input type="text" class="new_kw" value="Администрирование"></div>'
             );
     });
+
+    //fieldset toggle
+    jQuery('.field_legend').click(function() {
+        jQuery(this).parent('fieldset').toggleClass('collapsed');
+        jQuery(this).next('div').slideToggle();
+    });
+
+//    function toggleFieldset(el) {
+//        var fieldset = Element.up(el, 'fieldset');
+//        fieldset.toggleClassName('collapsed');
+//        Effect.toggle(fieldset.down('div'), 'slide', {duration:0.2});
+//    }
 });
