@@ -12,12 +12,24 @@ function save_options() {
             store_data.push([jQuery(this).children('.new_name').val(), jQuery(this).children('.new_link').val()]);
     });
 
-    chrome.storage.sync.set(
-        {'special_links': store_data},
-        function() {
-            jQuery('#status').text('data saved').fadeIn().fadeOut(1000);
-        }
-    );
+    if (store_data.length)
+    {
+        chrome.storage.sync.set(
+            {'special_links': store_data},
+            function() {
+                jQuery('#status').text('data saved').fadeIn().fadeOut(1000);
+            }
+        );
+    }
+    else
+    {
+        chrome.storage.sync.remove(
+            'special_links',
+            function() {
+                jQuery('#status').text('data saved').fadeIn().fadeOut(1000);
+            }
+        );
+    }
 }
 
 jQuery(document).ready(function(){
@@ -28,7 +40,7 @@ jQuery(document).ready(function(){
     var options_arr = [];
 
     chrome.storage.sync.get(
-        ['special_links', 'special_options', 'gantt_keywords'],
+        ['special_links', 'special_options', 'gantt_keywords', 'scope'],
         function(data){
             if (data.special_links && data.special_links.length)
             {
@@ -64,6 +76,9 @@ jQuery(document).ready(function(){
             }
             else
                 $kw_data_container.append('<div><input type="text" class="new_kw"></div>');
+
+            if (data.scope)
+                jQuery('#scope_value').val(data.scope);
         }
     );
 
@@ -97,6 +112,20 @@ jQuery(document).ready(function(){
                jQuery('#status_0').text('data saved').fadeIn().fadeOut(1000);
             }
         );
+    });
+
+    // save scope
+    jQuery('#scope_value').keydown(function(event){
+        console.log(event.which);
+        if (event.which == 13)
+        {
+            chrome.storage.sync.set(
+                {'scope': jQuery(this).val()},
+                function() {
+                    jQuery('#status_scope').text('data saved').fadeIn().fadeOut(1000);
+                }
+            );
+        }
     });
 
     jQuery('#keywords').submit(function(){

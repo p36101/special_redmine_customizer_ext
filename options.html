@@ -14,9 +14,22 @@
 <body>
 
 <div>Options:</div>
-<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 295px">
+<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
+    <div style="color: #cccccc;font-family: monospace;font-size: 10px;margin: -5px 0 10px 0;">Press Enter to save text fields</div>
     <div>
-        <span style="margin-right: 90px">Special issue names:</span>
+        <label for="scope_value" style="margin-right: 90px">Scope:</label>
+        <span><input type="text" id="scope_value"></span>
+        <div style="width: 50px; float: right; padding-top: 4px">
+            <span id="status_scope" style="color: #20b2aa; font-size: 11px"></span>
+        </div>
+    </div>
+</div>
+<div style="clear: both"></div>
+
+<div>Fun options:</div>
+<div style="border: 1px #cccccc solid; padding: 10px; float: left; width: 320px">
+    <div>
+        <label for="spec_ops" style="margin-right: 85px">Special issue names (ru):</label>
         <span><input type="checkbox" id="spec_ops"></span>
         <div style="width: 50px; float: right; padding-top: 4px">
             <span id="status_0" style="color: #20b2aa; font-size: 11px"></span>
@@ -25,7 +38,7 @@
 </div>
 <div style="clear: both"></div>
 
-<div style="clear: left; margin-top: 20px">Links to main menu:</div>
+<div style="clear: left; margin-top: 20px">Links to top menu:</div>
 <div style="border: 1px #cccccc solid; padding: 10px; float: left">
     <div><span style="margin-right: 90px">Label:</span><span>Url:</span></div>
     <form id="save">
