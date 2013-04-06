@@ -114,18 +114,18 @@ jQuery(document).ready(function(){
         );
     });
 
-    // save scope
+    // save `scope`
     jQuery('#scope_value').keydown(function(event){
-        console.log(event.which);
         if (event.which == 13)
-        {
-            chrome.storage.sync.set(
-                {'scope': jQuery(this).val()},
-                function() {
-                    jQuery('#status_scope').text('data saved').fadeIn().fadeOut(1000);
-                }
-            );
-        }
+            jQuery(this).change();
+    });
+    jQuery('#scope_value').change(function(){
+        chrome.storage.sync.set(
+            {'scope': jQuery('#scope_value').val()},
+            function() {
+                jQuery('#status_scope').text('data saved').fadeIn().fadeOut(500);
+            }
+        );
     });
 
     jQuery('#keywords').submit(function(){
