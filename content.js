@@ -17,10 +17,10 @@ chrome.storage.sync.get(
         else
             special_options_issue_name += 'var special_options_issue_name = 0;';
 
-        if (data.gantt_keywords && data.gantt_keywords.length)
-            gantt_keywords = 'var gantt_keywords = ' + JSON.stringify(data.gantt_keywords) + ';';
-        else
-            gantt_keywords = 'var gantt_keywords = [];';
+//        if (data.gantt_keywords && data.gantt_keywords.length)
+//            gantt_keywords = 'var gantt_keywords = ' + JSON.stringify(data.gantt_keywords) + ';';
+//        else
+//            gantt_keywords = 'var gantt_keywords = [];';
 
         if (data.scope && data.scope.length)
             scope = data.scope;
@@ -30,23 +30,28 @@ chrome.storage.sync.get(
         // check scope
         if (location.href.search(scope) != -1)
         {
-            jQuery.get(chrome.extension.getURL('/jquery.js'),
-                function(data) {
-                    var script = document.createElement("script");
-                    script.setAttribute("type", "text/javascript");
-                    script.innerHTML = data;
-                    document.getElementsByTagName("head")[0].appendChild(script);
+//            (function (chrome) {
+                var request = new XMLHttpRequest(),
+                    urlToMain = chrome.extension.getURL('/injected.js'),
+                    script;
 
-                    jQuery.get(chrome.extension.getURL('/injected.js'),
-                        function(data) {
-                            var script = document.createElement("script");
-                            script.setAttribute("type", "text/javascript");
-                            script.innerHTML = special_links + special_options_issue_name + gantt_keywords + data;
-                            document.getElementsByTagName("head")[0].appendChild(script);
-                        }
-                    );
-                }
-            );
+                request.open('GET', urlToMain, false);
+                request.send(null);
+                script = document.createElement('script');
+                script.type = "text/javascript";
+                script.innerHTML = special_links + special_options_issue_name + gantt_keywords + request.responseText;
+//                script.text = request.responseText;
+                document.body.appendChild(script);
+//            }(chrome));
+
+//            jQuery.get(chrome.extension.getURL('/injected.js'),
+//                function(data) {
+//                    var script = document.createElement("script");
+//                    script.setAttribute("type", "text/javascript");
+//                    script.innerHTML = special_links + special_options_issue_name + gantt_keywords + data;
+//                    document.getElementsByTagName("head")[0].appendChild(script);
+//                }
+//            );
         }
 
     }

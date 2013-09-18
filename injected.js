@@ -133,9 +133,9 @@ jQuery(document).ready(function(){
     {
         var tab_personal_url = jQuery('.tabs ul li:eq(1) a').attr('href');
         if (tab_personal_url.search('\\?') == -1)
-            tab_personal_url += '?columns=day&criterias=member#tab_personal;';
+            tab_personal_url += '?columns=day&criteria=user#tab_personal;';
         else
-            tab_personal_url += '&columns=day&criterias=member#tab_personal;';
+            tab_personal_url += '&columns=day&criteria=user#tab_personal;';
 
         jQuery('.tabs ul li:eq(1)').after('<li id="tab_personal"><a href="'+tab_personal_url+'">Personal</a></li>');
 

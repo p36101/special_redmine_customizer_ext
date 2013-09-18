@@ -1,6 +1,6 @@
 {
 	"name": "Special Redmine customizer",
-	"version": "1.9.6",
+	"version": "1.10",
 	"icons": {
 		"16": "raccoon_comp16.png",
 		"48": "raccoon_comp48.png"
@@ -21,12 +21,11 @@
 	"content_scripts": [
 		{
 			"matches": [ "http://rm.hsmedia.ru/*" ],
-			"js": [ "jquery.js", "content.js" ],
+			"js": [ "content.js" ],
 			"run_at": "document_end"
 		}
 	],
 	"web_accessible_resources": [
-		"/jquery.js",
 		"/injected.js"
 	],
 	"options_page": "options.html"
