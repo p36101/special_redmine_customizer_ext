@@ -17,10 +17,10 @@ chrome.storage.sync.get(
         else
             special_options_issue_name += 'var special_options_issue_name = 0;';
 
-//        if (data.gantt_keywords && data.gantt_keywords.length)
-//            gantt_keywords = 'var gantt_keywords = ' + JSON.stringify(data.gantt_keywords) + ';';
-//        else
-//            gantt_keywords = 'var gantt_keywords = [];';
+        if (data.gantt_keywords && data.gantt_keywords.length)
+            gantt_keywords = 'var gantt_keywords = ' + JSON.stringify(data.gantt_keywords) + ';';
+        else
+            gantt_keywords = 'var gantt_keywords = [];';
 
         if (data.scope && data.scope.length)
             scope = data.scope;
