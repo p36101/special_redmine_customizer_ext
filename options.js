@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
     var options_arr = [];
 
     chrome.storage.sync.get(
-        ['special_links', 'special_options', 'gantt_keywords', 'scope'],
+        ['special_links', 'special_options', 'gantt_keywords', 'scope', 'hide_tags'],
         function(data){
             if (data.special_links && data.special_links.length)
             {
@@ -79,6 +79,9 @@ jQuery(document).ready(function(){
 
             if (data.scope)
                 jQuery('#scope_value').val(data.scope);
+
+            if (data.hide_tags)
+                jQuery('#hide_tags_value').attr('checked', 'checked');
         }
     );
 
@@ -110,6 +113,24 @@ jQuery(document).ready(function(){
             {'special_options': options_arr},
             function() {
                jQuery('#status_0').text('data saved').fadeIn().fadeOut(1000);
+            }
+        );
+    });
+
+    // save Hide tags option
+    jQuery('#hide_tags_value').click(function(){
+
+        var val;
+
+        if (jQuery(this).is(':checked'))
+            val = 1;
+        else
+            val = 0;
+
+        chrome.storage.sync.set(
+            {'hide_tags': val},
+            function() {
+               jQuery('#status_tags').text('data saved').fadeIn().fadeOut(1000);
             }
         );
     });

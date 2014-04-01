@@ -37,6 +37,14 @@ if (special_options_issue_name)
     jQuery('title').text(replace_word(jQuery('title').text()));
 }
 
+// remove tags
+console.log(hide_tags);
+if (hide_tags)
+{
+    jQuery('.tags').prev().remove();
+    jQuery('.tags').remove();
+}
+
 function replace_word(str)
 {
     var h2_issue = str.split(' ');

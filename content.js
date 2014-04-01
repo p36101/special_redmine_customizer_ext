@@ -1,11 +1,12 @@
 chrome.storage.sync.get(
-    ['special_links', 'special_options', 'gantt_keywords', 'scope'],
+    ['special_links', 'special_options', 'gantt_keywords', 'scope', 'hide_tags'],
     function(data){
 
         var special_links = '';
         var special_options_issue_name = '';
         var gantt_keywords = '';
         var scope = '';
+        var hide_tags = 'var hide_tags = 0;';
 
         if (data.special_links && data.special_links.length)
             special_links = JSON.stringify(data).replace(/(.*)\"special_links\"\:\[\[(.*?)\]\][\},\,](.*)/g, 'var special_links = [[$2]];');
@@ -27,6 +28,9 @@ chrome.storage.sync.get(
         else
             scope = 'redmine';
 
+        if (data.hide_tags)
+            hide_tags = 'var hide_tags = 1;';
+
         // check scope
         if (location.href.search(scope) != -1)
         {
@@ -39,7 +43,7 @@ chrome.storage.sync.get(
                 request.send(null);
                 script = document.createElement('script');
                 script.type = "text/javascript";
-                script.innerHTML = special_links + special_options_issue_name + gantt_keywords + request.responseText;
+                script.innerHTML = special_links + special_options_issue_name + gantt_keywords + hide_tags + request.responseText;
 //                script.text = request.responseText;
                 document.body.appendChild(script);
 //            }(chrome));
